@@ -76,6 +76,9 @@ dependencies {
 	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.10.Final'
 	// https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager
 	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.2.10.Final'
+
+	// https://mvnrepository.com/artifact/org.reflections/reflections
+	compile group: 'org.reflections', name: 'reflections', version: '0.9.11'
 }
 
 bootRun {

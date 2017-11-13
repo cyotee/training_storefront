@@ -85,11 +85,7 @@ public class VendorRepositoryControllerTests {
     @Test
     public void findAllVendorsTest(){
 
-        List<String> vendorNames = new ArrayList<String>();
 
-        for(VendorEntity vendorEntity : vendorEntityTestRig.getVendorEntitiesMap().values()){
-            vendorNames.add(vendorEntity.getVendorName());
-        }
 
         try {
             //http://localhost:8080/vendors/search/getVendorByVendorNameContainsIgnoreCase?vendorName=red%20hat

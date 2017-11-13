@@ -29,6 +29,9 @@ spring:
 server:
   address: localhost
   port: 8080
+logging:
+  level:
+   root: info
 ---
 spring:
   profiles: postgresql
