@@ -69,8 +69,13 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/joda-time/joda-time
 	compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
-	// https://mvnrepository.com/artifact/joda-time/joda-time-hibernate
-	compile group: 'joda-time', name: 'joda-time-hibernate', version: '1.4'
+	// https://mvnrepository.com/artifact/org.jadira.usertype/usertype.core
+	compile group: 'org.jadira.usertype', name: 'usertype.core', version: '6.0.1.GA'
+
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.10.Final'
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager
+	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.2.10.Final'
 }
 
 bootRun {

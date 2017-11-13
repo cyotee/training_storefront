@@ -25,7 +25,7 @@ public class ClassSessionEntity {
     @ManyToOne
     @JoinColumn(name="SKU_KEY")
     @NotNull
-    private SkuEntity classSku;
+    private SkuEntity classSessionSku;
 
     @Autowired
     @ManyToOne
@@ -33,23 +33,60 @@ public class ClassSessionEntity {
     @NotNull
     private AddressEntity classSessionAddress;
 
-    @Autowired
-    @ManyToOne
-    @JoinColumn(name="INSTRUCTOR_KEY")
-    @NotNull
-    private InstructorEntity classSessionInstructor;
-
-    @Columns(columns={@Column(name="CLASS_SESSION_STARTTIME"), @Column(name="CLASS_SESSION_START_TIMEZONE")})
-    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTimeTZ")
-    @NotNull
+    @Column(name="CLASS_SESSION_STARTTIME")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime classSessionStartDate;
 
-    @Columns(columns={@Column(name="CLASS_SESSION_ENDTIME"), @Column(name="CLASS_SESSION_END_TIMEZONE")})
-    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTimeTZ")
-    @NotNull
+    @Column(name="CLASS_SESSION_ENDTIME")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime classSessionEndDate;
 
     @Column(name="CLASS_SESSION_TIMEZONE")
-    @NotNull
     private String classSessionTimeZone;
+
+    public Integer getClassSessionKey() {
+        return  classSessionKey;
+    }
+
+    public void setClassSessionKey(Integer classSessionKey) {
+        this.classSessionKey = classSessionKey;
+    }
+
+    public SkuEntity getClassSessionSku() {
+        return classSessionSku;
+    }
+
+    public void setClassSessionSku(SkuEntity classSku) {
+        this.classSessionSku = classSessionSku;
+    }
+
+    public AddressEntity getClassSessionAddress() {
+        return classSessionAddress;
+    }
+
+    public void setClassSessionAddress(AddressEntity classSessionAddress) { this.classSessionAddress = classSessionAddress; }
+
+    public String getClassSessionStartDate() {
+        return classSessionStartDate.toString("MM/dd/yyyy HH:mm:ss");
+    }
+
+    public void setClassSessionStartDate(DateTime dateTime) {
+        this.classSessionStartDate = classSessionStartDate;
+    }
+
+    public String getClassSessionEndDate() {
+        return classSessionEndDate.toString("MM/dd/yyyy HH:mm:ss");
+    }
+
+    public void setClassSessionEndDate(DateTime dateTime) {
+        this.classSessionEndDate = classSessionEndDate;
+    }
+
+    public String getClassSessionTimeZone() {
+        return classSessionTimeZone;
+    }
+
+    public void setClassSessionTimeZone(String classSessionTimeZone) {
+        this.classSessionTimeZone = classSessionTimeZone;
+    }
 }
