@@ -47,6 +47,11 @@ public class SkuEntityTestRig extends AbstractTestRig {
     @Qualifier("dataSource")
     private DataSource dataSource;
 
+    private List<Integer> skuKeys;
+    private List<String> vendorSkuCodes;
+    private List<String> skuNames;
+    private List<String> skuDescriptions;
+
     @PostConstruct
     public void init(){
         for(SkuEntity skuEntityToInitialize : skuEntitiesMap.values()){
@@ -66,6 +71,18 @@ public class SkuEntityTestRig extends AbstractTestRig {
 
         for(SkuEntity skuEntityToInitialize : getSkuEntitiesMap().values()){
             logger.info("Using initialized skuEntity: " + skuEntityToInitialize.toString());
+        }
+
+        skuKeys = new ArrayList<Integer>();
+        vendorSkuCodes = new ArrayList<String>();
+        skuNames = new ArrayList<String>();
+        skuDescriptions = new ArrayList<String>();
+
+        for(SkuEntity sku : skuEntitiesMap.values()){
+            skuKeys.add(sku.getSkuKey());
+            vendorSkuCodes.add(sku.getVendorSkuCode());
+            skuNames.add(sku.getSkuName());
+            skuDescriptions.add(sku.getSkuDescription());
         }
     }
 
@@ -176,6 +193,46 @@ public class SkuEntityTestRig extends AbstractTestRig {
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public VendorEntityTestRig getVendorEntityTestRig() {
+        return vendorEntityTestRig;
+    }
+
+    public void setVendorEntityTestRig(VendorEntityTestRig vendorEntityTestRig) {
+        this.vendorEntityTestRig = vendorEntityTestRig;
+    }
+
+    public List<Integer> getSkuKeys() {
+        return skuKeys;
+    }
+
+    public void setSkuKeys(List<Integer> skuKeys) {
+        this.skuKeys = skuKeys;
+    }
+
+    public List<String> getVendorSkuCodes() {
+        return vendorSkuCodes;
+    }
+
+    public void setVendorSkuCodes(List<String> vendorSkuCodes) {
+        this.vendorSkuCodes = vendorSkuCodes;
+    }
+
+    public List<String> getSkuNames() {
+        return skuNames;
+    }
+
+    public void setSkuNames(List<String> skuNames) {
+        this.skuNames = skuNames;
+    }
+
+    public List<String> getSkuDescriptions() {
+        return skuDescriptions;
+    }
+
+    public void setSkuDescriptions(List<String> skuDescriptions) {
+        this.skuDescriptions = skuDescriptions;
     }
 
     @Component

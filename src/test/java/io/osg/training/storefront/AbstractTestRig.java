@@ -104,11 +104,11 @@ public abstract class AbstractTestRig implements TestRig{
 
         searchCriteria.addAll(getSearchCriteriaFromStartAscending(searchCriterion));
         searchCriteria.addAll(getSearchCriteriaFromStartAscending(searchCriterion.toLowerCase()));
-        searchCriteria.addAll(getSearchCriteriaFromStartAscending(searchCriterion.toLowerCase()));
+        searchCriteria.addAll(getSearchCriteriaFromStartAscending(searchCriterion.toUpperCase()));
 
         searchCriteria.addAll(getSearchCriteriaFromStartDescending(searchCriterion));
         searchCriteria.addAll(getSearchCriteriaFromStartDescending(searchCriterion.toLowerCase()));
-        searchCriteria.addAll(getSearchCriteriaFromStartDescending(searchCriterion.toLowerCase()));
+        searchCriteria.addAll(getSearchCriteriaFromStartDescending(searchCriterion.toUpperCase()));
 
         return searchCriteria;
     }
@@ -116,9 +116,13 @@ public abstract class AbstractTestRig implements TestRig{
     protected List<String> getSearchCriteriaFromStartAscending(String searchCriterion){
         List<String> searchCriteria = new ArrayList<String>();
 
+        logger.debug("Generating ascending length search criteria from " + searchCriterion + " of length " + searchCriterion.length());
+
         for (Integer iteration = 0; iteration <= searchCriterion.length(); iteration++){
-            searchCriterion = searchCriterion.substring(0, iteration);
-            searchCriteria.add(searchCriterion);
+            logger.debug("Starting iteration: " + iteration);
+            logger.debug("Adding search criteria " + searchCriterion.substring(0, iteration));
+            String newSearchCriterion = searchCriterion.substring(0, iteration);
+            searchCriteria.add(newSearchCriterion);
         }
 
         return searchCriteria;
@@ -127,9 +131,13 @@ public abstract class AbstractTestRig implements TestRig{
     protected List<String> getSearchCriteriaFromStartDescending(String searchCriterion){
         List<String> searchCriteria = new ArrayList<String>();
 
+        logger.debug("Generating descending length search criteria from " + searchCriterion + " of length " + searchCriterion.length());
+
         for (Integer iteration = 0; iteration <= searchCriterion.length(); iteration++){
-            searchCriterion = searchCriterion.substring(0, iteration);
-            searchCriteria.add(searchCriterion);
+            logger.debug("Starting iteration: " + iteration);
+            logger.debug("Adding search criteria " + searchCriterion.substring(iteration, searchCriterion.length()));
+            String newSearchCriterion = searchCriterion.substring(iteration, searchCriterion.length());
+            searchCriteria.add(newSearchCriterion);
         }
 
         return searchCriteria;

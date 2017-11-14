@@ -12,7 +12,7 @@ import java.util.Set;
 public interface AddressEntityRepository extends PagingAndSortingRepository<AddressEntity, String> {
     Set<AddressEntity> findByAddressLine1ContainsIgnoreCase(@Param("addressLine1") String addressLine1);
     Set<AddressEntity> findByAddressLine2ContainsIgnoreCase(@Param("addressLine2") String addressLine2);
-    Set<AddressEntity> findByCityContainsIgnoreCase(@Param("city") String countrySubdivision);
+    Set<AddressEntity> findByCityContainsIgnoreCase(@Param("city") String city);
     Set<AddressEntity> findByCountrySubdivisionContainsIgnoreCase(@Param("countrySubdivision") String countrySubdivision);
     Set<AddressEntity> findByPostalCode(@Param("postalCode") String postalCode);
 }

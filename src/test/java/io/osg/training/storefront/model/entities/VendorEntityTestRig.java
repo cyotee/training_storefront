@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,6 +41,9 @@ public class VendorEntityTestRig extends AbstractTestRig {
     @Autowired
     private VendorEntityRowMapper vendorEntityRowMapper;
 
+    private List<Integer> vendorKeys;
+    private List<String> vendorNames;
+
     @PostConstruct
     public void init() {
         logger.info("Testing table: " + getTestTable());
@@ -50,6 +54,14 @@ public class VendorEntityTestRig extends AbstractTestRig {
 
         for(VendorEntity vendorEntityToInitialize : getVendorEntitiesMap().values()){
             logger.info("Using initialized skuEntity: " + vendorEntityToInitialize.toString());
+        }
+
+        vendorNames = new ArrayList<String>();
+        vendorKeys = new ArrayList<Integer>();
+
+        for(VendorEntity vendor : vendorEntitiesMap.values()){
+            vendorKeys.add(vendor.getVendorKey());
+            vendorNames.add(vendor.getVendorName());
         }
     }
 
@@ -124,8 +136,24 @@ public class VendorEntityTestRig extends AbstractTestRig {
         return vendorEntityRowMapper;
     }
 
+    public List<Integer> getVendorKeys() {
+        return vendorKeys;
+    }
+
+    public void setVendorKeys(List<Integer> vendorKeys) {
+        this.vendorKeys = vendorKeys;
+    }
+
     public void setVendorEntityRowMapper(VendorEntityRowMapper vendorEntityRowMapper) {
         this.vendorEntityRowMapper = vendorEntityRowMapper;
+    }
+
+    public List<String> getVendorNames() {
+        return vendorNames;
+    }
+
+    public void setVendorNames(List<String> vendorNames) {
+        this.vendorNames = vendorNames;
     }
 
     @Component
